@@ -2,6 +2,7 @@
 
 import numpy as np
 import numpy.testing as npt
+import pytest
 
 
 def test_daily_mean_zeros():
@@ -31,3 +32,27 @@ def test_daily_mean_integers():
 
 
 # TODO(lesson-robust) Implement tests for the other statistical functions
+
+def test_daily_max_integers():
+    """Test that max function works for an array of positive integers."""
+    from inflammation.models import daily_max
+
+    test_input = np.array([[1, 2],
+                           [3, 4],
+                           [5, 6]])
+    test_result = np.array([5, 6])
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(daily_max(test_input), test_result)
+
+def test_daily_min_integers():
+    """Test that min function works for an array of positive integers."""
+    from inflammation.models import daily_min
+
+    test_input = np.array([[1, 2],
+                           [3, 4],
+                           [5, 6]])
+    test_result = np.array([1, 2])
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(daily_min(test_input), test_result)
