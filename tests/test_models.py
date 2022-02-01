@@ -105,7 +105,7 @@ def test_daily_min(test, expected):
 
 @pytest.mark.parametrize(
     "test, expected, raises",
-[
+    [
         (
             [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
             [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
