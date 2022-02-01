@@ -101,3 +101,22 @@ def test_daily_min(test, expected):
     """Test mean function works for array of zeroes and positive integers."""
     from inflammation.models import daily_min
     npt.assert_array_equal(daily_min(np.array(test)), np.array(expected))
+
+
+@pytest.mark.parametrize(
+    "test_data, test_names, expected",
+    [
+        ([[1., 2., 3.], [4., 5., 6.]],
+         ['Alice', 'Dave'],
+         [{
+                'name': 'Alice',
+                'data': [1., 2., 3.],
+         }, {
+                'name': 'Dave',
+                'data': [4., 5., 6.],
+         }, ]),
+    ])
+def test_attach_names(test_data, test_names, expected):
+    """Test attach names works for test case of names and data"""
+    from inflammation.models import attach_names
+    npt.assert_array_equal(attach_names(test_data, test_names), np.array(expected))
