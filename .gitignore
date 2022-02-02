@@ -16,3 +16,6 @@
 # Virtual Environments
 venv/
 .venv/
+
+# Data files
+*.json

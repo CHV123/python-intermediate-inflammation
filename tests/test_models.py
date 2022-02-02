@@ -104,6 +104,7 @@ def test_daily_min(test, expected):
 
 
 @pytest.mark.parametrize(
+<<<<<<< HEAD
     "test, expected, raises",
     [
         (
@@ -160,3 +161,21 @@ def test_patient_normalise(test, expected, raises):
                 npt.assert_almost_equal(patient_normalise(test), np.array(expected), decimal=2)
         else:
             npt.assert_almost_equal(patient_normalise(test), np.array(expected), decimal=2)
+=======
+    "test_data, test_names, expected",
+    [
+        ([[1., 2., 3.], [4., 5., 6.]],
+         ['Alice', 'Dave'],
+         [{
+                'name': 'Alice',
+                'data': [1., 2., 3.],
+         }, {
+                'name': 'Dave',
+                'data': [4., 5., 6.],
+         }, ]),
+    ])
+def test_attach_names(test_data, test_names, expected):
+    """Test attach names works for test case of names and data"""
+    from inflammation.models import attach_names
+    npt.assert_array_equal(attach_names(test_data, test_names), np.array(expected))
+>>>>>>> develop
