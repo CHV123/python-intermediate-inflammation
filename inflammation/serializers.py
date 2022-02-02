@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 
 
 class PatientSerializer:
+    """Class for saving and loading data using the JSON serializer class"""
     model = models.Patient
 
     @classmethod
@@ -41,6 +42,7 @@ class PatientJSONSerializer(PatientSerializer):
 
 
 class Serializer(ABC):
+    """Abstract class for inheritance purposes to save and load data"""
     @abstractmethod
     def serialize(cls, instances):
         raise NotImplementedError
@@ -59,6 +61,7 @@ class Serializer(ABC):
 
 
 class ObservationSerializer(Serializer):
+    """Saving the observation data for particular patients"""
     model = models.Observation
 
     @classmethod

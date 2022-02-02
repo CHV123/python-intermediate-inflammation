@@ -73,7 +73,7 @@ def patient_normalise(data):
     normalised[normalised < 0] = 0
     return normalised
 
-# TODO(lesson-design) Add Patient class
+
 def attach_names(data, names):
     """ Attach a set of patient data to the provided names
 
@@ -140,6 +140,26 @@ class Observation:
         return str(self.value)
 
 
-# TODO(lesson-design) Implement data persistence
-# TODO(lesson-design) Add Doctor class
+class Doctor(Person):
+    """A minimal doctor class for keeping track of patient assignment"""
+    def __init__(self, name, patients=None):
+        super().__init__(name)
+        self.patients = []
+        if patients is not None:
+            self.patients.append(patients)
 
+    def add_patient(self, patient):
+        """Returns list of patients"""
+        if patient is Patient:
+            self.patients.append(patient)
+        else:
+            raise ValueError("Added patient must be of patient class")
+
+        return self.patients
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def patient_list(self):
+        return self.patients
